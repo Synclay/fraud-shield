@@ -114,8 +114,8 @@ export type SynclayFraudShieldOptions = {
   /** Synclay shop / tenant id. */
   shopId: string;
   /**
-   * API origin. Defaults to `https://api.synclay.com`.
-   * Local: `http://localhost:5001`
+   * API origin. Defaults to production (`api.synclay.com`).
+   * Local example: `localhost:5001` with your preferred scheme.
    */
   baseUrl?: string;
   /** Fetch timeout in ms (default 15_000). */

@@ -276,13 +276,16 @@ export function createFraudShield(
 }
 
 /**
- * Build a client from standard env vars:
+ * Build a client from env-style key/value map.
+ * Pass `process.env` from your app — this SDK never reads env globals itself.
+ *
+ * Expected keys:
  * - `SYNCLAY_API_KEY` / `SYNCLAY_FRAUD_API_KEY`
  * - `SYNCLAY_SHOP_ID`
  * - `SYNCLAY_API_BASE_URL` (optional)
  */
 export function createFraudShieldFromEnv(
-  env: Record<string, string | undefined> = process.env
+  env: Record<string, string | undefined>
 ): SynclayFraudShield {
   return new SynclayFraudShield({
     apiKey: env.SYNCLAY_FRAUD_API_KEY || env.SYNCLAY_API_KEY || "",

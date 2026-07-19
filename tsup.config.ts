@@ -8,7 +8,8 @@ export default defineConfig({
   },
   format: ["esm"],
   dts: true,
-  sourcemap: true,
+  // Omit sourcemaps from the published bundle (smaller + less supply-chain noise).
+  sourcemap: false,
   clean: true,
   external: ["react", "react-dom", "next", "next/server"],
   treeshake: true,

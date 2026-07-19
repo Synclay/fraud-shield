@@ -47,10 +47,33 @@ SYNCLAY_API_KEY=sc_live_xxxxxxxx
 SYNCLAY_SHOP_ID=your_shop_id
 
 # Optional (default https://api.synclay.com)
-# SYNCLAY_API_BASE_URL=http://localhost:5001
+# SYNCLAY_API_BASE_URL=https://api.synclay.com
 ```
 
 Create a PAT in Synclay with scope **`connect:fraud:read`** (or `connect:*`).
+
+### Turnstile (captcha challenges)
+
+Load Cloudflare Turnstile in your app root / layout — the SDK never injects remote scripts:
+
+```tsx
+// app/layout.tsx
+import Script from "next/script";
+
+export default function RootLayout({ children }) {
+  return (
+    <html>
+      <body>
+        {children}
+        <Script
+          src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
+          strategy="afterInteractive"
+        />
+      </body>
+    </html>
+  );
+}
+```
 
 ---
 
@@ -168,7 +191,7 @@ Mark checkout inputs with `data-synclay-field` so typing / paste behavior is sco
 ```ts
 import { createFraudShield, createFraudShieldFromEnv } from "synclay-fraud-shield";
 
-const shield = createFraudShieldFromEnv();
+const shield = createFraudShieldFromEnv(process.env);
 // or: createFraudShield({ apiKey, shopId })
 
 const result = await shield.check({
@@ -225,7 +248,7 @@ npm install
 npm run build
 ```
 
-Point `SYNCLAY_API_BASE_URL` at your local API (`http://localhost:5001`) when testing against a local Synclay stack.
+Point `SYNCLAY_API_BASE_URL` at your local API when testing against a local Synclay stack.
 
 ---
 

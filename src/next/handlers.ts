@@ -99,8 +99,8 @@ function bool(value: unknown): boolean | undefined {
  * import { createFraudShieldHandlers } from "synclay-fraud-shield/next";
  *
  * const handlers = createFraudShieldHandlers({
- *   apiKey: process.env.SYNCLAY_API_KEY!,
- *   shopId: process.env.SYNCLAY_SHOP_ID!,
+ *   apiKey: env.SYNCLAY_API_KEY!,
+ *   shopId: env.SYNCLAY_SHOP_ID!,
  * });
  *
  * export const GET = handlers.GET;

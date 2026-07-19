@@ -111,23 +111,14 @@ export function FraudChallenge({
       });
     };
 
+    // Host apps must load Turnstile themselves (no dynamic script injection).
+    // <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async></script>
     if (window.turnstile) {
       mount();
     } else {
-      const existing = document.querySelector(
-        'script[data-synclay-turnstile="1"]'
+      setLocalError(
+        "Turnstile is not loaded. Add the Cloudflare Turnstile script to your app."
       );
-      if (!existing) {
-        const script = document.createElement("script");
-        script.src =
-          "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
-        script.async = true;
-        script.dataset.synclayTurnstile = "1";
-        script.onload = () => mount();
-        document.head.appendChild(script);
-      } else {
-        existing.addEventListener("load", mount);
-      }
     }
 
     return () => {

@@ -1,10 +1,13 @@
 {
   "name": "synclay-fraud-shield",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Synclay Fraud Shield SDK for Next.js and modern e-commerce storefronts",
   "license": "MIT",
-  "author": "Synclay",
-  "homepage": "https://synclay.com",
+  "author": {
+    "name": "Synclay",
+    "url": "https://synclay.com"
+  },
+  "homepage": "https://github.com/Synclay/fraud-shield#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Synclay/fraud-shield.git"
@@ -20,7 +23,9 @@
     "nextjs",
     "checkout",
     "bangladesh",
-    "courier"
+    "courier",
+    "otp",
+    "turnstile"
   ],
   "type": "module",
   "sideEffects": [
@@ -46,13 +51,16 @@
   },
   "files": [
     "dist",
-    "README.md"
+    "README.md",
+    "LICENSE",
+    "SECURITY.md"
   ],
   "scripts": {
-    "build": "tsup && cp src/react/styles.css dist/react/styles.css",
+    "build": "tsup && mkdir -p dist/react && cp src/react/styles.css dist/react/styles.css",
     "dev": "tsup --watch",
     "typecheck": "tsc --noEmit",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run typecheck && npm run build"
   },
   "peerDependencies": {
     "next": ">=13.4.0",
