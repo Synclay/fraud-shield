@@ -1,0 +1,216 @@
+/**
+ * Synclay Fraud Shield — checkout challenge styles
+ * Import once in your app: `import "synclay-fraud-shield/styles.css"`
+ */
+
+.synclay-fs-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+  font-family: "Segoe UI", "Helvetica Neue", ui-sans-serif, system-ui, sans-serif;
+}
+
+.synclay-fs-backdrop {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(15, 118, 110, 0.28), transparent 55%),
+    radial-gradient(900px 500px at 100% 0%, rgba(28, 25, 23, 0.35), transparent 50%),
+    rgba(12, 10, 9, 0.55);
+  backdrop-filter: blur(6px);
+}
+
+.synclay-fs-card {
+  position: relative;
+  width: min(100%, 26rem);
+  padding: 1.75rem 1.5rem 1.5rem;
+  border-radius: 1.25rem;
+  background:
+    linear-gradient(180deg, #fffefb 0%, #f7f3ec 100%);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.7) inset,
+    0 24px 60px rgba(28, 25, 23, 0.28);
+  color: #1c1917;
+  animation: synclay-fs-rise 0.35s ease-out;
+}
+
+@keyframes synclay-fs-rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.synclay-fs-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.synclay-fs-mark {
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #0f766e, #134e4a);
+  box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.15);
+}
+
+.synclay-fs-brand-text {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 650;
+  color: #57534e;
+}
+
+.synclay-fs-icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  display: grid;
+  place-items: center;
+  border-radius: 0.9rem;
+  margin-bottom: 1rem;
+  font-size: 1.15rem;
+  color: #0f766e;
+  background: rgba(15, 118, 110, 0.1);
+}
+
+.synclay-fs-icon--block {
+  color: #b91c1c;
+  background: rgba(185, 28, 28, 0.1);
+}
+
+.synclay-fs-title {
+  margin: 0 0 0.4rem;
+  font-size: 1.35rem;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+.synclay-fs-subtitle {
+  margin: 0 0 1.25rem;
+  color: #57534e;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.synclay-fs-error {
+  margin: -0.5rem 0 1rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 0.65rem;
+  background: rgba(185, 28, 28, 0.08);
+  color: #991b1b;
+  font-size: 0.875rem;
+}
+
+.synclay-fs-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.synclay-fs-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #44403c;
+}
+
+.synclay-fs-input {
+  appearance: none;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.85rem 0.95rem;
+  border-radius: 0.75rem;
+  border: 1px solid #d6d3d1;
+  background: #fff;
+  font-size: 1.25rem;
+  letter-spacing: 0.35em;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.synclay-fs-input:focus {
+  border-color: #0f766e;
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.18);
+}
+
+.synclay-fs-button {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  margin-top: 0.35rem;
+  padding: 0.9rem 1rem;
+  border-radius: 0.8rem;
+  font-weight: 650;
+  font-size: 0.95rem;
+  color: #fafaf9;
+  background: linear-gradient(180deg, #0f766e 0%, #115e59 100%);
+  box-shadow: 0 10px 20px rgba(15, 118, 110, 0.25);
+  transition: transform 0.12s ease, filter 0.12s ease, opacity 0.12s ease;
+}
+
+.synclay-fs-button:hover:not(:disabled) {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+.synclay-fs-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.synclay-fs-link {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: #0f766e;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.35rem;
+  align-self: center;
+}
+
+.synclay-fs-link:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.synclay-fs-captcha-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 4.5rem;
+}
+
+.synclay-fs-muted {
+  margin: 0.75rem 0 0;
+  color: #78716c;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  text-align: center;
+}
+
+/* Honeypot — visually hidden, still in DOM for bots */
+.synclay-fs-hp {
+  position: absolute !important;
+  left: -10000px !important;
+  top: auto !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
